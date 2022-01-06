@@ -16,7 +16,7 @@ defmodule ElixirDropbox.Sharing do
   @spec create_shared_link(Client, binary) :: Map
   def create_shared_link(client, path) do
     body = %{"path" => path, "short_url" => true}
-    result = to_string(Poison.Encoder.encode(body, []))
+    result = to_string(Poison.Encoder.encode(body, %{}))
     post(client, "/sharing/create_shared_link", result)
   end
 

@@ -25,15 +25,15 @@ defmodule ElixirDropbox.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :httpoison]]
+    [applications: [:logger, :httpoison, :poison]]
   end
 
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:httpoison, "~> 1.0"},
-      {:poison, "~> 1.5"},
-      {:inch_ex, "~> 0.5", only: [:dev, :test]},
+      {:httpoison, "~> 1.8"},
+      {:poison, "~> 4.0"},
+      {:inch_ex, "~> 2.0", only: [:dev, :test]},
       {:json, "~> 0.3.0"},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
       {:exvcr, "~> 0.10", only: :test},
@@ -44,9 +44,9 @@ defmodule ElixirDropbox.Mixfile do
 
   defp package do
     [
-      maintainers: ["Spiros Gerokostas"],
+      maintainers: ["Spiros Gerokostas", "Alexander Torres"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/sger/elixir_dropbox"}
+      links: %{"GitHub" => "https://github.com/alexanderttalvarez/elixir_dropbox"}
     ]
   end
 end

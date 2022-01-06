@@ -19,7 +19,8 @@ defmodule ElixirDropbox do
   end
 
   @spec process_response(HTTPoison.Response.t()) :: response
-  def process_response(%HTTPoison.Response{status_code: 200, body: body}), do: Poison.decode!(body)
+  def process_response(%HTTPoison.Response{status_code: 200, body: body}),
+    do: Poison.decode!(body)
 
   def process_response(%HTTPoison.Response{status_code: status_code, body: body}) do
     cond do
@@ -41,7 +42,14 @@ defmodule ElixirDropbox do
 
   def post_request(client, url, body, headers) do
     headers = Map.merge(headers, headers(client))
-    HTTPoison.post!(url, body, headers) |> process_response
+
+    HTTPoison.post!(
+      url |> IO.inspect(label: "URL"),
+      body |> IO.inspect(label: "BODY"),
+      headers |> IO.inspect(label: "HEADERS")
+    )
+    |> IO.inspect(label: "ALL")
+    |> process_response
   end
 
   def upload_request(client, base_url, url, data, headers) do
